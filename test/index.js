@@ -79,11 +79,11 @@ describe('pagination', function(){
   });
 
   it('add trailing slash to base', function(){
-    var result = pagination('', posts);
+    var result = pagination('tags', posts);
 
-    result[0].path.should.eql('/');
-    result[1].path.should.eql('/page/2/');
-    result[2].path.should.eql('/page/3/');
+    result[0].path.should.eql('tags/');
+    result[1].path.should.eql('tags/page/2/');
+    result[2].path.should.eql('tags/page/3/');
   });
 
   it('perPage = 0', function(){
