@@ -1,32 +1,34 @@
-var should = require('chai').should();
+'use strict';
 
-describe('pagination', function(){
+var should = require('chai').should(); // eslint-disable-line
+
+describe('pagination', function() {
   var pagination = require('..');
 
   // Make some fixtures
   var posts = [];
 
-  for (var i = 0; i < 25; i++){
+  for (var i = 0; i < 25; i++) {
     posts.push({id: i});
   }
 
-  it('no base', function(){
+  it('no base', function() {
     try {
       pagination();
-    } catch (err){
+    } catch (err) {
       err.should.have.property('message', 'base must be a string!');
     }
   });
 
-  it('no posts', function(){
+  it('no posts', function() {
     try {
       pagination('/');
-    } catch (err){
+    } catch (err) {
       err.should.have.property('message', 'posts is required!');
     }
   });
 
-  it('default', function(){
+  it('default', function() {
     var result = pagination('/', posts);
 
     result.should.eql([
@@ -78,7 +80,7 @@ describe('pagination', function(){
     ]);
   });
 
-  it('add trailing slash to base', function(){
+  it('add trailing slash to base', function() {
     var result = pagination('tags', posts);
 
     result[0].path.should.eql('tags/');
@@ -86,7 +88,7 @@ describe('pagination', function(){
     result[2].path.should.eql('tags/page/3/');
   });
 
-  it('perPage = 0', function(){
+  it('perPage = 0', function() {
     var result = pagination('/', posts, {
       perPage: 0
     });
@@ -110,7 +112,7 @@ describe('pagination', function(){
     ]);
   });
 
-  it('format', function(){
+  it('format', function() {
     var result = pagination('/', posts, {
       format: 'index-%d.html'
     });
@@ -120,22 +122,22 @@ describe('pagination', function(){
     result[2].path.should.eql('/index-3.html');
   });
 
-  it('layout', function(){
+  it('layout', function() {
     var result = pagination('/', posts, {
       layout: 'test'
     });
 
-    for (var i = 0, len = result.length; i < len; i++){
+    for (var i = 0, len = result.length; i < len; i++) {
       result[i].layout.should.eql('test');
     }
   });
 
-  it('data', function(){
+  it('data', function() {
     var result = pagination('/', posts, {
       data: {tag: 'test'}
     });
 
-    for (var i = 0, len = result.length; i < len; i++){
+    for (var i = 0, len = result.length; i < len; i++) {
       result[i].data.tag.should.eql('test');
     }
   });

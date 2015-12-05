@@ -4,21 +4,15 @@
   "description": "Pagination utilities for Hexo generator plugins.",
   "main": "lib/pagination",
   "scripts": {
-    "test": "gulp test"
+    "eslint": "eslint .",
+    "jscs": "jscs .",
+    "test": "mocha test/index.js",
+    "test-cov": "istanbul cover --print both _mocha -- test/index.js"
   },
   "directories": {
     "lib": "./lib"
   },
-  "engines": {
-    "node": ">= 0.10.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/hexojs/hexo-pagination.git"
-  },
-  "bugs": {
-    "url": "https://github.com/hexojs/hexo-pagination/issues"
-  },
+  "repository": "hexojs/hexo-pagination",
   "homepage": "http://hexo.io/",
   "keywords": [
     "hexo",
@@ -29,17 +23,14 @@
   "license": "MIT",
   "devDependencies": {
     "chai": "^1.9.1",
-    "coveralls": "^2.11.2",
-    "gulp": "^3.8.9",
-    "gulp-istanbul": "^0.5.0",
-    "gulp-jshint": "^1.8.6",
-    "gulp-load-plugins": "^0.8.0",
-    "gulp-mocha": "^2.0.0",
-    "jshint-stylish": "^1.0.0",
-    "mocha": "^2.0.1",
-    "rimraf": "^2.2.8"
+    "eslint": "^1.10.3",
+    "eslint-config-hexo": "^1.0.2",
+    "istanbul": "^0.4.1",
+    "jscs": "^2.6.0",
+    "jscs-preset-hexo": "^1.0.1",
+    "mocha": "^2.0.1"
   },
   "dependencies": {
-    "utils-merge": "^1.0.0"
+    "object-assign": "^4.0.1"
   }
 }
