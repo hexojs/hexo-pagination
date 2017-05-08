@@ -39,7 +39,7 @@ pagination('/tags/hexo', [], {
 This function returns an array containing objects with 3 properties: `path`, `layout`, `data`.
 
 Data | Description
---- | --- | ---
+--- | --- 
 `base` | Base URL
 `total` | Total pages
 `current` | Current page number
