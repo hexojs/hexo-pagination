@@ -1,18 +1,18 @@
 'use strict';
 
-var should = require('chai').should(); // eslint-disable-line
+const should = require('chai').should(); // eslint-disable-line
 
-describe('pagination', function() {
-  var pagination = require('..');
+describe('pagination', () => {
+  const pagination = require('..');
 
   // Make some fixtures
-  var posts = [];
+  const posts = [];
 
-  for (var i = 0; i < 25; i++) {
+  for (let i = 0; i < 25; i++) {
     posts.push({id: i});
   }
 
-  it('no base', function() {
+  it('no base', () => {
     try {
       pagination();
     } catch (err) {
@@ -20,7 +20,7 @@ describe('pagination', function() {
     }
   });
 
-  it('no posts', function() {
+  it('no posts', () => {
     try {
       pagination('/');
     } catch (err) {
@@ -28,8 +28,8 @@ describe('pagination', function() {
     }
   });
 
-  it('default', function() {
-    var result = pagination('/', posts);
+  it('default', () => {
+    const result = pagination('/', posts);
 
     result.should.eql([
       {
@@ -80,16 +80,16 @@ describe('pagination', function() {
     ]);
   });
 
-  it('add trailing slash to base', function() {
-    var result = pagination('tags', posts);
+  it('add trailing slash to base', () => {
+    const result = pagination('tags', posts);
 
     result[0].path.should.eql('tags/');
     result[1].path.should.eql('tags/page/2/');
     result[2].path.should.eql('tags/page/3/');
   });
 
-  it('perPage = 0', function() {
-    var result = pagination('/', posts, {
+  it('perPage = 0', () => {
+    const result = pagination('/', posts, {
       perPage: 0
     });
 
@@ -102,7 +102,7 @@ describe('pagination', function() {
           total: 1,
           current: 1,
           current_url: '/',
-          posts: posts,
+          posts,
           prev: 0,
           prev_link: '',
           next: 0,
@@ -112,8 +112,8 @@ describe('pagination', function() {
     ]);
   });
 
-  it('format', function() {
-    var result = pagination('/', posts, {
+  it('format', () => {
+    const result = pagination('/', posts, {
       format: 'index-%d.html'
     });
 
@@ -122,22 +122,22 @@ describe('pagination', function() {
     result[2].path.should.eql('/index-3.html');
   });
 
-  it('layout', function() {
-    var result = pagination('/', posts, {
+  it('layout', () => {
+    const result = pagination('/', posts, {
       layout: 'test'
     });
 
-    for (var i = 0, len = result.length; i < len; i++) {
+    for (let i = 0, len = result.length; i < len; i++) {
       result[i].layout.should.eql('test');
     }
   });
 
-  it('data', function() {
-    var result = pagination('/', posts, {
+  it('data', () => {
+    const result = pagination('/', posts, {
       data: {tag: 'test'}
     });
 
-    for (var i = 0, len = result.length; i < len; i++) {
+    for (let i = 0, len = result.length; i < len; i++) {
       result[i].data.tag.should.eql('test');
     }
   });
