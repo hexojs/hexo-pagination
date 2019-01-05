@@ -11,6 +11,9 @@
   "directories": {
     "lib": "./lib"
   },
+  "files": [
+     "lib"
+  ],
   "repository": "hexojs/hexo-pagination",
   "homepage": "http://hexo.io/",
   "keywords": [
