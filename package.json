@@ -1,6 +1,6 @@
 {
   "name": "hexo-pagination",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Pagination utilities for Hexo generator plugins.",
   "main": "lib/pagination",
   "scripts": {
