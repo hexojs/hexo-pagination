@@ -1,6 +1,6 @@
 # hexo-pagination
 
-[![Build Status](https://travis-ci.org/hexojs/hexo-pagination.svg?branch=master)](https://travis-ci.org/hexojs/hexo-pagination)
+[![Build Status](https://github.com/hexojs/hexo-pagination/workflows/Tester/badge.svg)](https://github.com/hexojs/hexo-pagination/actions?query=workflow%3ATester)
 [![NPM version](https://badge.fury.io/js/hexo-pagination.svg)](https://www.npmjs.com/package/hexo-pagination)
 [![Coverage Status](https://img.shields.io/coveralls/hexojs/hexo-pagination.svg)](https://coveralls.io/r/hexojs/hexo-pagination?branch=master)
 
