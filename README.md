@@ -56,4 +56,4 @@ Data | Description
 
 MIT
 
-[Hexo]: http://hexo.io/
+[Hexo]: https://hexo.io/
