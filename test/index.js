@@ -141,4 +141,15 @@ describe('pagination', () => {
       result[i].data.tag.should.eql('test');
     }
   });
+
+  it('explicitPaging', () => {
+    const result = pagination('/', posts, {
+      explicitPaging: true
+    });
+
+    for (let i = 0, len = result.length; i < len; i++) {
+      const pageNum = i + 1;
+      result[i].path.should.eql(`/page/${pageNum}/`);
+    }
+  });
 });
