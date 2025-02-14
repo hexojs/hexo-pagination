@@ -152,4 +152,49 @@ describe('pagination', () => {
       result[i].path.should.eql(`/page/${pageNum}/`);
     }
   });
+  describe('pagination renameLast', () => {
+
+    it('should generate /page/{num}/ paths with explicitPaging and renameLast for multiple posts', () => {
+      let result = pagination('/', posts, {
+        explicitPaging: true,
+        renameLast: true
+      });
+      for (let i = 0, len = result.length; i < len - 1; i++) {
+        const pageNum = i + 1;
+        result[i].path.should.eql(`/page/${pageNum}/`);
+      }
+      result[result.length - 1].path.should.eql('/page/last/');
+      result[result.length - 2].data.next_link.should.eql('/page/last/');
+    });
+
+    it('should work with localizedLast option with explicitPaging and renameLast', () => {
+      let result = pagination('/', posts, {
+        format: 'ページ/%d/',
+        explicitPaging: true,
+        renameLast: true,
+        localizedLast: '最後'
+      });
+      for (let i = 0, len = result.length; i < len - 1; i++) {
+        const pageNum = i + 1;
+        result[i].path.should.eql(`/ページ/${pageNum}/`);
+      }
+      result[result.length - 1].path.should.eql('/ページ/最後/');
+      result[result.length - 2].data.next_link.should.eql('/ページ/最後/');
+    });
+
+    it('should produce /page/last/ for a single post with explicitPaging and renameLast', () => {
+      let result = pagination('/', [posts[0]], {
+        explicitPaging: true,
+        renameLast: true
+      });
+      result[0].path.should.eql('/page/last/');
+    });
+
+    it('should produce root path for a single post without explicitPaging even if renameLast is set', () => {
+      let result = pagination('/', [posts[0]], {
+        renameLast: true
+      });
+      result[0].path.should.eql('/');
+    });
+  });
 });
