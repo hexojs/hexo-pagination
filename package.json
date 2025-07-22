@@ -3,16 +3,20 @@
   "version": "4.0.0",
   "description": "Pagination utilities for Hexo generator plugins.",
   "main": "lib/pagination",
+  "types": "src/pagination",
   "scripts": {
+    "build": "tsc",
     "eslint": "eslint .",
     "test": "mocha test/index.js",
     "test-cov": "c8 --reporter=lcovonly npm run test"
   },
   "directories": {
-    "lib": "./lib"
+    "lib": "./lib",
+    "src": "./src"
   },
   "files": [
-    "lib"
+    "lib",
+    "src"
   ],
   "repository": "hexojs/hexo-pagination",
   "homepage": "https://hexo.io/",
@@ -24,11 +28,13 @@
   "author": "Tommy Chen <tommy351@gmail.com> (http://zespia.tw)",
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^24.0.3",
     "c8": "^7.12.0",
     "chai": "^4.3.6",
     "eslint": "^8.24.0",
     "eslint-config-hexo": "^5.0.0",
-    "mocha": "^10.0.0"
+    "mocha": "^10.0.0",
+    "typescript": "^5.8.3"
   },
   "engines": {
     "node": ">=18"
